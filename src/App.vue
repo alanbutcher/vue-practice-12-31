@@ -2,14 +2,14 @@
   <div id="app">
     <app-header></app-header>
     <div>{{ name }}</div>
-    <app-footer></app-footer>
+  <compFooter></compFooter>
   </div>
 </template>
 
 
 
 <script>
-import Footer from  './components/Header_footer/Footer.vue'
+import compFooter from  './components/Header_footer/Footer.vue'
 
 export default {
   data() {
@@ -18,7 +18,7 @@ export default {
     }
   },
   components: {
-    'app-footer': Footer
+    compFooter
     }
 }
 
