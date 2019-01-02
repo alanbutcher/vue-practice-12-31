@@ -1,28 +1,49 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <div class="container">
-      <div>{{ name }}</div>
-    </div>
-  <compFooter></compFooter>
+    <compUserProfile
+      :userName="name"
+      :userLastname="lastname"
+      :userAge="age"
+      :userParents="parents"
+      @updateName="name = $event"
+      :updateLastname="updateLastname"
+    ></compUserProfile>
+    <compFooter></compFooter>
   </div>
 </template>
 
 
 
 <script>
-import compFooter from  './components/Header_footer/Footer.vue'
+import compFooter from  './components/Header_footer/Footer.vue';
+import compUserProfile from './components/User/Profile.vue';
 
 export default {
   data() {
     return {
-      name: "Alan"
+      name: "Alan",
+      lastname: "Butcher",
+      age: 1,
+      parents: {
+        mother: "Maddy",
+        father: "Alan"
+      }
     }
   },
+
   components: {
-    compFooter
+    compFooter,
+    compUserProfile
+    },
+
+  methods: {
+    updateLastname(value) {
+      this.lastname = value
     }
-}
+    }
+  }
+
 
 
 </script>
