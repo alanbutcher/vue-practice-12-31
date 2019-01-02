@@ -9,6 +9,22 @@
       @updateName="name = $event"
       :updateLastname="updateLastname"
     ></compUserProfile>
+    <compAbilities>
+      <ul slot='main_ab'>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+      </ul>
+      <div slot='notes'>
+        <p>Also know Vue</p>
+      </div>
+      <div>
+        <a href="#">See more about this user</a>
+      </div>
+      <div :slot='slotName'>
+        other content
+      </div>
+    </compAbilities>
     <compFooter></compFooter>
   </div>
 </template>
@@ -18,6 +34,7 @@
 <script>
 import compFooter from  './components/Header_footer/Footer.vue';
 import compUserProfile from './components/User/Profile.vue';
+import compAbilities from './components/User/Abilities.vue'; 
 
 export default {
   data() {
@@ -28,14 +45,22 @@ export default {
       parents: {
         mother: "Maddy",
         father: "Alan"
-      }
+      },
+      slotName:''
     }
   },
 
   components: {
     compFooter,
-    compUserProfile
+    compUserProfile,
+    compAbilities
     },
+
+  created() {
+    setTimeout(() => {
+      this.slotName = 'other'
+    }, 3000)
+  },
 
   methods: {
     updateLastname(value) {
